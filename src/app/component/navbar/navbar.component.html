@@ -1,0 +1,15 @@
+<ion-header [translucent]="true" class="nav-page-flex">
+    <div class="nav-itens-flex">
+      <ion-icon name="arrow-back-sharp" *ngIf="btnBack"></ion-icon>
+      <ion-icon name="menu-sharp" *ngIf="btnMenu"></ion-icon>
+      <img [src]="imageUrl" alt="pokemon" *ngIf="imageUrl.length" class="nav-img-pkm">
+      <p class="nav-page-name" *ngIf="pageName.length">{{ pageName }}</p>
+    </div>
+    <div class="nav-itens-flex">
+      <ion-icon name="options-outline" *ngIf="btnFilter" class="nav-icon-margin"></ion-icon>
+      <ion-icon name="heart-sharp" *ngIf="btnHeart && pkmFavorite" (click)="changeFavorite()"  class="nav-icon-margin"></ion-icon>
+      <ion-icon name="heart-outline" *ngIf="btnHeart && !pkmFavorite" (click)="changeFavorite()"  class="nav-icon-margin"></ion-icon>
+      <ion-icon name="search-sharp" *ngIf="btnSearch"></ion-icon>
+      <p class="nav-page-name" *ngIf="pkmId > 0">#{{ pkmId | number:'3.0' }}</p>
+    </div>
+</ion-header>
