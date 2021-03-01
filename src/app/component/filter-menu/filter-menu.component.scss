@@ -1,0 +1,16 @@
+@import "../../../theme/variables.scss";
+
+.filter-menu {
+    width: 100vw;
+    height: 100vh;
+    z-index: 101;
+    position: absolute;
+    top: 0;
+    left: 100vw;
+    transition: all 0.5s ease-out;
+    background-color: $page-color;
+}
+
+.filter-menu-show {
+    left: 0 !important;
+}

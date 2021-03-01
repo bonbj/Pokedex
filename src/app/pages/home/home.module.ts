@@ -6,6 +6,8 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { NavbarComponent } from 'src/app/component/navbar/navbar.component';
+import { SideMenuComponent } from 'src/app/component/side-menu/side-menu.component';
+import { FilterMenuComponent } from 'src/app/component/filter-menu/filter-menu.component';
 
 @NgModule({
   imports: [
@@ -16,7 +18,9 @@ import { NavbarComponent } from 'src/app/component/navbar/navbar.component';
   ],
   declarations: [
     HomePage,
-    NavbarComponent
+    NavbarComponent,
+    SideMenuComponent,
+    FilterMenuComponent
   ]
 })
 export class HomePageModule {}

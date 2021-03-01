@@ -1,4 +1,11 @@
+@import "../../../theme/variables.scss";
+
 .nav-page-flex {
+
+    a {
+        color: $black-metal;
+    }
+
     padding: 0 1rem;
     width: 100%;
     height: 100%;
