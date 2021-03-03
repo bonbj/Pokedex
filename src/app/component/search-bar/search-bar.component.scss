@@ -1,0 +1,35 @@
+@import "../../../theme/variables.scss";
+
+.search-bar {
+    width: 100%;
+    background-color: $page-color;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .search-text {
+        border-radius: 2pc;
+        background-color: $metal-color-light;
+        width: 80%;
+        height: 65%;
+        border: none;
+        outline: none;
+        padding-left: 15%;
+    }
+}
+
+.search-icon {
+    z-index: 100;
+    position: relative;
+    top: -65%;
+    left: 15%;
+}
+
+.close-icon {
+    z-index: 100;
+    position: relative;
+    top: -65%;
+    left: 76%;
+    cursor: pointer;
+}

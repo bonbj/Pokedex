@@ -15,7 +15,6 @@ export class NavbarComponent implements OnInit {
   @Input() public btnFilter: boolean = false;
   @Input() public btnSearch: boolean = false;
   @Input() public btnHeart: boolean = false;
-
   public pkmFavorite: boolean = false;
   constructor(
     private pageStore: PageStore
@@ -23,15 +22,19 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {}
 
-  public changeFavorite(){
+  public changeFavorite(): void{
     this.pkmFavorite = !this.pkmFavorite;
   }
 
-  public openSideMenu(){
+  public openSideMenu(): void{
     this.pageStore.isSideMenuOpen = true;
   }
 
-  public openFilterMenu(){
+  public openFilterMenu(): void{
     this.pageStore.isFilterMenuOpen = true;
+  }
+
+  public searchBarShow(): void{
+    this.pageStore.isSearchBarShow = true;
   }
 }

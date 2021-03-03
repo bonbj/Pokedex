@@ -5,4 +5,6 @@ export class PageStore {
     isSideMenuOpen: boolean = false;
     @observable
     isFilterMenuOpen: boolean = false;
+    @observable
+    isSearchBarShow: boolean = false;
 }

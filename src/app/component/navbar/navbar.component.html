@@ -9,7 +9,9 @@
       <ion-icon name="options-outline" *ngIf="btnFilter" class="nav-icon-margin" (click)="openFilterMenu()"></ion-icon>
       <ion-icon name="heart-sharp" *ngIf="btnHeart && pkmFavorite" (click)="changeFavorite()"  class="nav-icon-margin"></ion-icon>
       <ion-icon name="heart-outline" *ngIf="btnHeart && !pkmFavorite" (click)="changeFavorite()"  class="nav-icon-margin"></ion-icon>
-      <ion-icon name="search-sharp" *ngIf="btnSearch"></ion-icon>
+      <ion-icon name="search-sharp" *ngIf="btnSearch" (click)="searchBarShow()"></ion-icon>
       <p class="nav-page-name" *ngIf="pkmId > 0">#{{ pkmId | number:'3.0' }}</p>
     </div>
+
+    <app-search-bar class="navbar-search-bar" *ngIf="pageStore.isSearchBarShow"></app-search-bar>
 </ion-header>

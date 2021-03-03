@@ -8,6 +8,7 @@ import { HomePageRoutingModule } from './home-routing.module';
 import { NavbarComponent } from 'src/app/component/navbar/navbar.component';
 import { SideMenuComponent } from 'src/app/component/side-menu/side-menu.component';
 import { FilterMenuComponent } from 'src/app/component/filter-menu/filter-menu.component';
+import { SearchBarComponent } from 'src/app/component/search-bar/search-bar.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { FilterMenuComponent } from 'src/app/component/filter-menu/filter-menu.c
     HomePage,
     NavbarComponent,
     SideMenuComponent,
-    FilterMenuComponent
+    FilterMenuComponent,
+    SearchBarComponent
   ]
 })
 export class HomePageModule {}
