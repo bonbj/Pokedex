@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PageStore } from 'src/app/atores/pages.store';
+import { PageStore } from 'src/app/stores/pages.store';
 
 @Component({
   selector: 'app-navbar',
