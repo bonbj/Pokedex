@@ -14,27 +14,35 @@ export class PokedexProvider {
     ) { }
 
   public async loadingAllPokemon():Promise<void>{
-    let requests: string[] = [];
-    for (let index = 1; index < 899; index++) {
-      requests.push(`https://pokeapi.co/api/v2/pokemon/${index}`);
+    if(navigator.onLine){
+      let requests: string[] = [];
+      for (let index = 1; index < 899; index++) {
+        requests.push(`https://pokeapi.co/api/v2/pokemon/${index}`);
+      }
+  
+      let querry = requests.map(name => fetch(name));
+  
+      try {
+        Promise.all(querry)
+          .then(async (responses) => {
+            return responses;
+          })
+          .then(responses => Promise.all(responses.map(r => r.json())))
+          .then(pokemons => pokemons.forEach(pokemon => this.factoryPokemon(pokemon)))
+          .catch(async () => this.modalBlock())
+          .then(async () => {
+            await this.modalService.closeModal();
+          });
+      }catch(error){
+        this.modalBlock();
+      }
+    }else {
+      this.modalBlock();
     }
+  }
 
-    let querry = requests.map(name => fetch(name));
-
-    try {
-      Promise.all(querry)
-        .then(async (responses) => {
-          return responses;
-        })
-        .then(responses => Promise.all(responses.map(r => r.json())))
-        .then(pokemons => pokemons.forEach(pokemon => this.factoryPokemon(pokemon)))
-        .then(async () => {
-          await this.modalService.closeModal();
-        });
-    }catch(error){
-      await this.modalService.presentWarningModal(`Infelizmente não foi possível carregar a Pokédex`);
-    }
-
+  private async modalBlock(){
+    await this.modalService.presentWarningModal(`Infelizmente não foi possível carregar a Pokédex`)
   }
 
   private async factoryPokemon(responseApi:any): Promise<void> {
