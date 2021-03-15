@@ -23,8 +23,10 @@ export class ModalService {
   public async presentWarningModal(message:string): Promise<void>{ 
     const modal = await this.modalController.create({
       component: WarningModalComponent,
+      backdropDismiss: false,
       componentProps : { message : message }
     });
+    return await modal.present();
   }
 
   public async closeModal(): Promise<void> {

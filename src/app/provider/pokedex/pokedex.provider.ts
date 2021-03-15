@@ -9,7 +9,6 @@ import { ModalService } from 'src/app/service/modal-service/modal-service.servic
 })
 export class PokedexProvider {
   private errors : any = [];
-  private parsed: number = 0;
 
   constructor(
     private http: HttpClient,
@@ -18,22 +17,26 @@ export class PokedexProvider {
     ) { }
 
   public async loadingAllPokemon():Promise<void>{
+    let requests: string[] = [];
     for (let index = 1; index < 899; index++) {
-      await this.http.get(`https://pokeapi.co/api/v2/pokemon/${index}`).toPromise()
-        .then((response: any) => {
-          this.factoryPokemon(response);
-        }).catch((e) => {
-          this.errors.push(e);
-        })
+      requests.push(`https://pokeapi.co/api/v2/pokemon/${index}`);
     }
-    this.pokedex.allPokemon.sort((pokemonA: Pokemon,pokemonB:Pokemon) => (pokemonA.id < pokemonB.id) ? -1 : 1 );
-    await this.modalService.closeModal();
 
-    if(this.errors.length > 0){
-      await this.modalService.presentWarningModal(
-         `Infelizmente não foi possível carregar ${this.errors.length} pokemon${this.errors.length > 1 ? 's': ''}`
-      );
+    let querry = requests.map(name => fetch(name));
+
+    try {
+      Promise.all(querry)
+        .then(async (responses) => {
+          return responses;
+        })
+        .then(responses => Promise.all(responses.map(r => r.json())))
+        .then(pokemons => pokemons.forEach(pokemon => this.factoryPokemon(pokemon))).then(async () => {
+          await this.modalService.closeModal();
+        })
+      }catch(error){
+      await this.modalService.presentWarningModal(`Infelizmente não foi possível carregar a Pokédex`);
     }
+
   }
 
   private async factoryPokemon(responseApi:any): Promise<void> {
@@ -43,12 +46,14 @@ export class PokedexProvider {
     pokemon.weight = responseApi.weight;
     pokemon.name = responseApi.name;
     pokemon.generation = this.returnGeneration(responseApi.id);
-    pokemon.type = responseApi.types.map(e => e.type.name);
+    pokemon.type = responseApi.types.map((e:any) => e.type.name);
     pokemon.sprite = this.returnSprite(responseApi.sprites);
 
-    this.pokedex.allPokemon.push(pokemon);
+    responseApi.stats.forEach(status => {
+      pokemon.stats[`${status.stat.name}`] = status.base_stat;
+    });
 
-    this.parsed++;
+    this.pokedex.allPokemon.push(pokemon);
   }
 
   private returnGeneration(id: number): number {
