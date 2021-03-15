@@ -19,12 +19,20 @@ export class PokedexProvider {
 
   public async loadingAllPokemon():Promise<void>{
     for (let index = 1; index < 899; index++) {
-      this.http.get(`https://pokeapi.co/api/v2/pokemon/${index}`).toPromise()
+      await this.http.get(`https://pokeapi.co/api/v2/pokemon/${index}`).toPromise()
         .then((response: any) => {
           this.factoryPokemon(response);
         }).catch((e) => {
           this.errors.push(e);
         })
+    }
+    this.pokedex.allPokemon.sort((pokemonA: Pokemon,pokemonB:Pokemon) => (pokemonA.id < pokemonB.id) ? -1 : 1 );
+    await this.modalService.closeModal();
+
+    if(this.errors.length > 0){
+      await this.modalService.presentWarningModal(
+         `Infelizmente não foi possível carregar ${this.errors.length} pokemon${this.errors.length > 1 ? 's': ''}`
+      );
     }
   }
 
@@ -41,12 +49,6 @@ export class PokedexProvider {
     this.pokedex.allPokemon.push(pokemon);
 
     this.parsed++;
-
-    if(this.pokedex.allPokemon.length === 898){
-      this.pokedex.allPokemon.sort((pokemonA: Pokemon,pokemonB:Pokemon) => (pokemonA.id < pokemonB.id) ? -1 : 1 );
-      await this.modalService.closeModal();
-    }
-
   }
 
   private returnGeneration(id: number): number {

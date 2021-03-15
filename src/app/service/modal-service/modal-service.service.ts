@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { MainModalComponent } from 'src/app/modal/main-modal/main-modal.component';
+import { WarningModalComponent } from 'src/app/modal/warning-modal/warning-modal.component';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class ModalService {
     public modalController: ModalController
   ) { }
 
-  public async presentModal() {
+  public async presentModal(): Promise<void> {
     const modal = await this.modalController.create({
       component: MainModalComponent,
       backdropDismiss: false
@@ -19,7 +20,14 @@ export class ModalService {
     return await modal.present();
   }
 
-  public closeModal(){
-    this.modalController.dismiss();
+  public async presentWarningModal(message:string): Promise<void>{ 
+    const modal = await this.modalController.create({
+      component: WarningModalComponent,
+      componentProps : { message : message }
+    });
+  }
+
+  public async closeModal(): Promise<void> {
+    await this.modalController.dismiss();
   }
 }

@@ -9,7 +9,6 @@ import { NavbarComponent } from 'src/app/component/navbar/navbar.component';
 import { SideMenuComponent } from 'src/app/component/side-menu/side-menu.component';
 import { FilterMenuComponent } from 'src/app/component/filter-menu/filter-menu.component';
 import { SearchBarComponent } from 'src/app/component/search-bar/search-bar.component';
-import { MainModalComponent } from 'src/app/modal/main-modal/main-modal.component';
 
 @NgModule({
   imports: [

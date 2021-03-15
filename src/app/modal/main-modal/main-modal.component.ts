@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Pokedex } from 'src/app/stores/pokedex.store';
 
 @Component({
   selector: 'app-main-modal',
@@ -7,6 +8,8 @@ import { Component } from '@angular/core';
 })
 export class MainModalComponent {
 
-  constructor() { }
+  constructor(
+    public pokedexStore: Pokedex
+  ) { }
 
 }
