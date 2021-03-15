@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
 import { Pokemon } from 'src/app/models/pokemon.model';
 import { Pokedex } from 'src/app/stores/pokedex.store';
 import { ModalService } from 'src/app/service/modal-service/modal-service.service';
@@ -8,10 +7,8 @@ import { ModalService } from 'src/app/service/modal-service/modal-service.servic
   providedIn: 'root'
 })
 export class PokedexProvider {
-  private errors : any = [];
 
   constructor(
-    private http: HttpClient,
     private pokedex : Pokedex,
     private modalService: ModalService
     ) { }
@@ -30,10 +27,11 @@ export class PokedexProvider {
           return responses;
         })
         .then(responses => Promise.all(responses.map(r => r.json())))
-        .then(pokemons => pokemons.forEach(pokemon => this.factoryPokemon(pokemon))).then(async () => {
+        .then(pokemons => pokemons.forEach(pokemon => this.factoryPokemon(pokemon)))
+        .then(async () => {
           await this.modalService.closeModal();
-        })
-      }catch(error){
+        });
+    }catch(error){
       await this.modalService.presentWarningModal(`Infelizmente não foi possível carregar a Pokédex`);
     }
 
