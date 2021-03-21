@@ -42,7 +42,7 @@ export class PokedexProvider {
   }
 
   private async modalBlock(){
-    await this.modalService.presentWarningModal(`Infelizmente não foi possível carregar a Pokédex`)
+    await this.modalService.presentWarningModal(`Infelizmente não foi possível carregar a Pokédex`);
   }
 
   private async factoryPokemon(responseApi:any): Promise<void> {
@@ -60,35 +60,40 @@ export class PokedexProvider {
     });
 
     this.pokedex.allPokemon.push(pokemon);
+
+    if(this.pokedex.allPokemon.length === 898){
+      this.pokedex.hideListPokemon = this.pokedex.allPokemon.slice(10);
+      this.pokedex.showListPokemon = this.pokedex.allPokemon.slice(0,10);
+    }
   }
 
   private returnGeneration(id: number): number {
     if(id < 152){
-      return 1
+      return 1;
     }
 
     if(id < 252){
-      return 2
+      return 2;
     }
 
     if(id < 387){
-      return 3
+      return 3;
     }
 
     if(id < 494){
-      return 4
+      return 4;
     }
 
     if(id < 650){
-      return 5
+      return 5;
     }
 
     if(id < 722){
-      return 6
+      return 6;
     }
 
     if(id < 810){
-      return 7
+      return 7;
     }
 
     return 8;

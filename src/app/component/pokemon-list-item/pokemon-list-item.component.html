@@ -1,0 +1,16 @@
+<section class="pokemon-list-item">
+  <div class="pokemon-list-item__header">
+    <p>#{{ pokemon.id | number:'3.0' }}</p>
+    <ion-icon name="heart-sharp" *ngIf="pokemon.isFavorite" (click)="changeFavorite()"></ion-icon>
+    <ion-icon name="heart-outline" *ngIf="!pokemon.isFavorite" (click)="changeFavorite()"></ion-icon>
+  </div>
+  <div class="pokemon-list-item__container">
+    <div class="pokemon-list-item__container__titles">
+      <h2>{{ pokemon.name }}</h2>
+      <div class="types-container">
+        <p *ngFor="let type of pokemon.type" [class]="type">{{ type }}</p>
+      </div>
+    </div>
+    <img [src]="pokemon.sprite" [alt]="pokemon.name">
+  </div>
+</section>
