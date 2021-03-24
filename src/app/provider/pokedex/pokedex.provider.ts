@@ -2,112 +2,34 @@ import { Injectable } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon.model';
 import { Pokedex } from 'src/app/stores/pokedex.store';
 import { ModalService } from 'src/app/service/modal-service/modal-service.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokedexProvider {
-
   constructor(
-    private pokedex : Pokedex,
-    private modalService: ModalService
-    ) { }
+    private pokedex: Pokedex,
+    private modalService: ModalService,
+    public http: HttpClient,
+  ) { }
 
-  public async loadingAllPokemon():Promise<void>{
-    if(navigator.onLine){
-      let requests: string[] = [];
-      for (let index = 1; index < 899; index++) {
-        requests.push(`https://pokeapi.co/api/v2/pokemon/${index}`);
-      }
-  
-      let querry = requests.map(name => fetch(name));
-  
-      try {
-        Promise.all(querry)
-          .then(async (responses) => {
-            return responses;
-          })
-          .then(responses => Promise.all(responses.map(r => r.json())))
-          .then(pokemons => pokemons.forEach(pokemon => this.factoryPokemon(pokemon)))
-          .catch(async () => this.modalBlock())
-          .then(async () => {
-            await this.modalService.closeModal();
-          });
-      }catch(error){
-        this.modalBlock();
-      }
-    }else {
+  public async loadingAllPokemon(): Promise<void> {
+    if (navigator.onLine) {
+
+      this.http.get(`https://bonbj-color-thief.herokuapp.com/pokemon-list`).toPromise()
+        .then(async (response: Pokemon[]) => {
+          this.pokedex.allPokemon = response;
+          await this.modalService.closeModal();
+          this.pokedex.showListPokemon = this.pokedex.allPokemon.slice(0,10);
+          this.pokedex.hideListPokemon = this.pokedex.allPokemon.slice(10);
+        }).catch(() => { this.modalBlock() });
+    } else {
       this.modalBlock();
     }
   }
 
-  private async modalBlock(){
+  private async modalBlock() {
     await this.modalService.presentWarningModal(`Infelizmente não foi possível carregar a Pokédex`);
-  }
-
-  private async factoryPokemon(responseApi:any): Promise<void> {
-    let pokemon: Pokemon = new Pokemon();
-    pokemon.id = responseApi.id;
-    pokemon.height = responseApi.height;
-    pokemon.weight = responseApi.weight;
-    pokemon.name = responseApi.name;
-    pokemon.generation = this.returnGeneration(responseApi.id);
-    pokemon.type = responseApi.types.map((e:any) => e.type.name);
-    pokemon.sprite = this.returnSprite(responseApi.sprites);
-
-    responseApi.stats.forEach(status => {
-      pokemon.stats[`${status.stat.name}`] = status.base_stat;
-    });
-
-    this.pokedex.allPokemon.push(pokemon);
-
-    if(this.pokedex.allPokemon.length === 898){
-      this.pokedex.hideListPokemon = this.pokedex.allPokemon.slice(10);
-      this.pokedex.showListPokemon = this.pokedex.allPokemon.slice(0,10);
-    }
-  }
-
-  private returnGeneration(id: number): number {
-    if(id < 152){
-      return 1;
-    }
-
-    if(id < 252){
-      return 2;
-    }
-
-    if(id < 387){
-      return 3;
-    }
-
-    if(id < 494){
-      return 4;
-    }
-
-    if(id < 650){
-      return 5;
-    }
-
-    if(id < 722){
-      return 6;
-    }
-
-    if(id < 810){
-      return 7;
-    }
-
-    return 8;
-  }
-
-  private returnSprite(sprites:any): string{
-    if(sprites.other['official-artwork'].front_default){
-      return sprites.other['official-artwork'].front_default;
-    }
-
-    if(sprites.other.dream_world.front_default){
-      return sprites.other.dream_world.front_default;
-    }
-
-    return sprites.front_default;
   }
 }
