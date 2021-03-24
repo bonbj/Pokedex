@@ -14,6 +14,10 @@ export class Pokemon {
         "special-defense": 0,
         "speed": 0
     };
-
     isFavorite: boolean = false;
+    color = {
+        r : 0,
+        g : 0,
+        b : 0
+    }
 }
