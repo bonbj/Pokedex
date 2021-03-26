@@ -6,7 +6,10 @@
     width: 90%;
     margin: 5%;
     padding: 0.5rem;
-
+    background-image: url("../../../assets/png/pokeball-gray.png");
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: right;
     p {
         margin: 0 !important;
         padding: 0 !important;
@@ -50,12 +53,8 @@
 
         &__img-div {
             width: 50%;
-            background-image: url("../../../assets/png/pokeball-gray.png");
-            background-size: 100%;
-            background-repeat: no-repeat;
-            background-position: center;
             img {
-                width: 68%;
+                height: 100%;
                 float: right;
             }   
         }
