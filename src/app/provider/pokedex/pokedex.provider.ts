@@ -21,8 +21,8 @@ export class PokedexProvider {
         .then(async (response: Pokemon[]) => {
           this.pokedex.allPokemon = response;
           await this.modalService.closeModal();
-          this.pokedex.showListPokemon = this.pokedex.allPokemon.slice(0,10);
-          this.pokedex.hideListPokemon = this.pokedex.allPokemon.slice(10);
+          this.pokedex.showListPokemon = this.pokedex.allPokemon.slice(0,30);
+          this.pokedex.hideListPokemon = this.pokedex.allPokemon.slice(30);
         }).catch(() => { this.modalBlock() });
     } else {
       this.modalBlock();

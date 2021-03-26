@@ -7,4 +7,6 @@ export class PageStore {
     isFilterMenuOpen: boolean = false;
     @observable
     isSearchBarShow: boolean = false;
+    @observable
+    searchPokemonText: string = "";
 }

@@ -5,11 +5,18 @@
 <app-filter-menu></app-filter-menu>
 
 <ion-content [fullscreen]="true">
-    <div *ngFor="let pokemon of pokedex.showListPokemon">
-        <app-pokemon-list-item [pokemon]="pokemon"></app-pokemon-list-item>
+    <div *ngIf="pokedex.filteredPokemon.length > 0">
+        <div *ngFor="let pokemon of pokedex.filteredPokemon">
+            <app-pokemon-list-item [pokemon]="pokemon"></app-pokemon-list-item>
+        </div>
     </div>
-
-    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMorePokemon($event)">
+    <div *ngIf="pokedex.filteredPokemon.length === 0">
+        <div *ngFor="let pokemon of pokedex.showListPokemon">
+            <app-pokemon-list-item [pokemon]="pokemon"></app-pokemon-list-item>
+        </div>
+    </div>
+        
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMorePokemon($event)" *ngIf="pokedex.filteredPokemon.length === 0">
         <ion-infinite-scroll-content
           loadingSpinner="bubbles"
           loadingText="Carregando mais pokémons...">

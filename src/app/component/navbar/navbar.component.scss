@@ -1,16 +1,16 @@
 @import "../../../theme/variables.scss";
 
 .nav-page-flex {
-
-    a {
-        color: $black-metal;
-    }
-
     padding: 0 1rem;
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: space-between;
+    background-color: $page-color;
+
+    a {
+        color: $black-metal;
+    }
 
     .nav-page-name {
         padding-left: 1rem;
