@@ -1,2 +1,25 @@
 <aside class="filter-menu" [ngClass]="pageStore.isFilterMenuOpen ? 'filter-menu-show' : '' ">
+
+    <ion-header>
+        <ion-toolbar>
+          <ion-title>Filtro</ion-title>
+          <ion-icon name="close-outline" class="closer-btn" (click)="closeFilter()"></ion-icon>
+        </ion-toolbar>
+    </ion-header>
+
+
+    <ion-list>
+        <ion-radio-group value="biff" [(ngModel)]="mainFilter" (ngModelChange)="filterPokemon()">
+            <ion-list-header>
+              <ion-label>Tipo</ion-label>
+              <ion-icon name="trash-outline" class="clear-filter" (click)="clearFilter()"></ion-icon>
+            </ion-list-header>
+            <ion-item *ngFor="let type of TYPEENUM.TYPESPATH">
+              <img [src]="type" class="pokemon-type">
+              <ion-label class="type-text">{{ typeName(type) }}</ion-label>
+              <ion-radio slot="start" [value]="type"></ion-radio>
+            </ion-item>
+        </ion-radio-group>
+    </ion-list>
+
 </aside>

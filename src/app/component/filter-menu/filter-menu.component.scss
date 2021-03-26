@@ -9,8 +9,114 @@
     left: 100vw;
     transition: all 0.5s ease-out;
     background-color: $page-color;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    overflow: auto;
+}
+
+.filter-menu::-webkit-scrollbar {
+    display: none;
+    overflow: auto;
 }
 
 .filter-menu-show {
     left: 0 !important;
+}
+
+.closer-btn {
+    font-size: 2rem;
+    float: right;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+.type-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+}
+
+.clear-filter {
+    font-size: 2rem;
+    float: right;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+.pokemon-type {
+    margin-top: 0.3rem;
+    width: 3rem;
+}
+
+.normal {
+    color: $normal;
+}
+
+.fighting {
+    color: $fighting;
+}
+
+.flying {
+    color: $flying;
+}
+
+.poison {
+    color: $poison;
+}
+
+.ground {
+    color: $ground;
+}
+
+.rock {
+    color: $rock;
+}
+
+.bug {
+    color: $bug;
+}
+
+.ghost {
+    color: $ghost;
+}
+
+.steel {
+    color: $steel;
+}
+
+.fire {
+    color: $fire;
+}
+
+.water {
+    color: $water;
+}
+
+.grass {
+    color: $grass;
+}
+
+.electric {
+    color: $electric;
+}
+
+.psychic {
+    color: $psychic;
+}
+
+.ice {
+    color: $ice;
+}
+
+.dragon {
+    color: $dragon;
+}
+
+.fairy {
+    color: $fairy;
+}
+
+.dark {
+    color: $dark;
 }
