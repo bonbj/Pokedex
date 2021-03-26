@@ -11,6 +11,8 @@
         <p *ngFor="let type of pokemon.type" [class]="type">{{ type }}</p>
       </div>
     </div>
-    <img [src]="pokemon.sprite" [alt]="pokemon.name">
+    <div class="pokemon-list-item__container__img-div">
+      <img [src]="pokemon.sprite" [alt]="pokemon.name">
+    </div>
   </div>
 </section>
