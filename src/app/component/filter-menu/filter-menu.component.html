@@ -1,8 +1,9 @@
 <aside class="filter-menu" [ngClass]="pageStore.isFilterMenuOpen ? 'filter-menu-show' : '' ">
 
-    <ion-header>
+    <ion-header class="filter-title">
         <ion-toolbar>
-          <ion-title>Filtro</ion-title>
+          <ion-icon name="trash-outline" class="clear-filter" (click)="clearFilter()"></ion-icon>
+          <ion-title >Filtro</ion-title>
           <ion-icon name="close-outline" class="closer-btn" (click)="closeFilter()"></ion-icon>
         </ion-toolbar>
     </ion-header>
@@ -11,15 +12,74 @@
     <ion-list>
         <ion-radio-group value="biff" [(ngModel)]="mainFilter" (ngModelChange)="filterPokemon()">
             <ion-list-header>
-              <ion-label>Tipo</ion-label>
-              <ion-icon name="trash-outline" class="clear-filter" (click)="clearFilter()"></ion-icon>
+              <ion-label>
+                <ion-icon name="caret-forward-outline" (click)="changeTypeFilter()" *ngIf="!filterTypeOpen"></ion-icon>
+                <ion-icon name="caret-down-outline" (click)="changeTypeFilter()" *ngIf="filterTypeOpen"></ion-icon>
+                Tipo
+              </ion-label>
             </ion-list-header>
-            <ion-item *ngFor="let type of TYPEENUM.TYPESPATH">
-              <img [src]="type" class="pokemon-type">
-              <ion-label class="type-text">{{ typeName(type) }}</ion-label>
-              <ion-radio slot="start" [value]="type"></ion-radio>
-            </ion-item>
+            <div [ngClass]="filterTypeOpen ? '' : 'close'">
+              <ion-item *ngFor="let type of TYPEENUM.TYPESPATH">
+                <img [src]="type" class="pokemon-type">
+                <ion-label class="type-text">{{ typeName(type) }}</ion-label>
+                <ion-radio slot="start" [value]="type"></ion-radio>
+              </ion-item>
+            </div>
         </ion-radio-group>
+    </ion-list>
+
+    <ion-list>
+      <ion-radio-group value="biff" [(ngModel)]="generationFilter" (ngModelChange)="filterPokemonByGeneration()">
+        <ion-list-header>
+          <ion-label>
+            <ion-icon name="caret-forward-outline" (click)="changeGenerationFilter()" *ngIf="!filterGenerationOpen"></ion-icon>
+            <ion-icon name="caret-down-outline" (click)="changeGenerationFilter()" *ngIf="filterGenerationOpen"></ion-icon>
+            Geração
+          </ion-label>
+        </ion-list-header>
+        <div [ngClass]="filterGenerationOpen ? '' : 'close'">
+          <ion-item>
+            <img [src]="pokedex.allPokemon[149].sprite" class="pokemon-generation">
+            <ion-label class="type-text">1º</ion-label>
+            <ion-radio slot="start" [value]="1"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <img [src]="pokedex.allPokemon[250].sprite" class="pokemon-generation">
+            <ion-label class="type-text">2º</ion-label>
+            <ion-radio slot="start" [value]="2"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <img [src]="pokedex.allPokemon[384].sprite" class="pokemon-generation">
+            <ion-label class="type-text">3º</ion-label>
+            <ion-radio slot="start" [value]="3"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <img [src]="pokedex.allPokemon[492].sprite" class="pokemon-generation">
+            <ion-label class="type-text">4º</ion-label>
+            <ion-radio slot="start" [value]="4"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <img [src]="pokedex.allPokemon[648].sprite" class="pokemon-generation">
+            <ion-label class="type-text">5º</ion-label>
+            <ion-radio slot="start" [value]="5"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <img [src]="pokedex.allPokemon[719].sprite" class="pokemon-generation">
+            <ion-label class="type-text">6º</ion-label>
+            <ion-radio slot="start" [value]="6"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <img [src]="pokedex.allPokemon[807].sprite" class="pokemon-generation">
+            <ion-label class="type-text">7º</ion-label>
+            <ion-radio slot="start" [value]="7"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <img [src]="pokedex.allPokemon[887].sprite" class="pokemon-generation">
+            <ion-label class="type-text">8º</ion-label>
+            <ion-radio slot="start" [value]="8"></ion-radio>
+          </ion-item>
+        </div>
+      </ion-radio-group>
     </ion-list>
 
 </aside>

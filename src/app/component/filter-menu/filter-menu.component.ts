@@ -12,12 +12,18 @@ import { PageStore } from 'src/app/stores/pages.store';
 export class FilterMenuComponent {
   public TYPEENUM: TYPEENUM = new TYPEENUM();
   public mainFilter:string = "";
+  public generationFilter: number = 0;
+  public filterTypeOpen: boolean = false;
+  public filterGenerationOpen: boolean = false;
+
   constructor(
     public pageStore: PageStore,
     private pokedex: Pokedex
   ) { }
 
     public filterPokemon(): void {
+      this.generationFilter = 0;
+
       this.pokedex.filteredPokemon = this.pokedex.allPokemon.filter((pokemon:Pokemon) => pokemon.type.includes(this.typeName(this.mainFilter)));
       this.closeFilter();
     }
@@ -38,5 +44,18 @@ export class FilterMenuComponent {
 
     public closeFilter(): void {
       this.pageStore.isFilterMenuOpen = false;
+    }
+
+    public changeTypeFilter(): void {
+      this.filterTypeOpen = !this.filterTypeOpen;
+    }
+
+    public changeGenerationFilter(): void {
+      this.filterGenerationOpen = !this.filterGenerationOpen
+    }
+    public filterPokemonByGeneration():void {
+      this.mainFilter = "";
+      this.pokedex.filteredPokemon = this.pokedex.allPokemon.filter((pokemon:Pokemon) => pokemon.generation == this.generationFilter);
+      this.closeFilter();
     }
 }
