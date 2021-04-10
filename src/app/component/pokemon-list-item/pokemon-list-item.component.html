@@ -1,4 +1,4 @@
-<section class="pokemon-list-item" [ngStyle]="{'backgroundColor': rgb}">
+<section class="pokemon-list-item" [ngStyle]="{'backgroundColor': rgb}" (click)="detailedPage()" [routerLink]="['/pokemon-detailed']">
   <div class="pokemon-list-item__header">
     <p>#{{ pokemon.id | number:'3.0' }}</p>
     <ion-icon name="heart-sharp" *ngIf="pokemon.isFavorite" (click)="changeFavorite()"></ion-icon>

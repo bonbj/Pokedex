@@ -3,7 +3,7 @@
       <a [routerLink]="btnBack"><ion-icon name="arrow-back-sharp" *ngIf="btnBack.length"></ion-icon></a>
       <ion-icon name="menu-sharp" *ngIf="btnMenu" (click)="openSideMenu()"></ion-icon>
       <img [src]="imageUrl" alt="pokemon" *ngIf="imageUrl.length" class="nav-img-pkm">
-      <p class="nav-page-name" *ngIf="pageName.length">{{ pageName }}</p>
+      <p class="nav-page-name">{{ pageName }}</p>
     </div>
     <div class="nav-itens-flex">
       <ion-icon name="options-outline" *ngIf="btnFilter" class="nav-icon-margin" (click)="openFilterMenu()"></ion-icon>

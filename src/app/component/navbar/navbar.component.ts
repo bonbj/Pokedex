@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { PageStore } from 'src/app/stores/pages.store';
 
 @Component({
@@ -6,7 +6,7 @@ import { PageStore } from 'src/app/stores/pages.store';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
   @Input() public pageName: string = '';
   @Input() public pkmId: number = 0;
   @Input() public imageUrl: string = '';
@@ -19,8 +19,6 @@ export class NavbarComponent implements OnInit {
   constructor(
     private pageStore: PageStore
   ) { }
-
-  ngOnInit() {}
 
   public changeFavorite(): void{
     this.pkmFavorite = !this.pkmFavorite;

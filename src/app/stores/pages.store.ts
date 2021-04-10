@@ -9,4 +9,6 @@ export class PageStore {
     isSearchBarShow: boolean = false;
     @observable
     searchPokemonText: string = "";
+    @observable
+    pokemonDetailedId: number = 0;
 }
