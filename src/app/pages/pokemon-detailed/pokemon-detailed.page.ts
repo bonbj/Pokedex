@@ -11,6 +11,7 @@ import { Pokedex } from 'src/app/stores/pokedex.store';
 export class PokemonDetailedPage implements OnInit {
 
   public pokemon: Pokemon;
+  public rgb: string;
 
   constructor(
     private pageStore: PageStore,
@@ -19,6 +20,7 @@ export class PokemonDetailedPage implements OnInit {
 
   ngOnInit() {
     this.pokemon = this.pokedex.allPokemon.find(pokemon => pokemon.id === this.pageStore.pokemonDetailedId);
+    this.rgb = `rgb(${this.pokemon.color.r},${this.pokemon.color.g},${this.pokemon.color.b})`;
   }
 
   public changeFavorite():void {

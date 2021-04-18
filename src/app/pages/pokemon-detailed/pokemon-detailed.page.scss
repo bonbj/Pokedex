@@ -1,11 +1,15 @@
 @import "../../../theme/variables.scss";
+@import "../../../theme/types.scss";
 
 
 ion-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    background: none;
+    position: absolute;
+    top: 0;
+    left: 0;
     div {
         padding: 0.5rem;
         display: flex;
@@ -15,8 +19,8 @@ ion-header {
 }
 
 .nav-img-pkm {
-    height: 3vh;
-    width: 3vh;
+    height: 5vh;
+    width: 5vh;
     filter: grayscale(100%) opacity(0.5) contrast(0);
     -webkit-filter: grayscale(100%) opacity(0.8) contrast(0);
     margin-left: 1rem;
@@ -28,10 +32,79 @@ a {
 
 .nav-icon {
     padding-right: 0.5rem;
+    color : $danger-color;
 }
 
 .font-nav {
     font-size: 1.5rem;
     margin: 0;
     font-weight: bold;
+}
+
+main {
+    background-image: url("../../../assets/png/pokeball-gray.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: top;
+}
+
+.pokemon-show {
+    background-image: url();
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+}
+
+.pokemon-img {
+    margin-top: 5rem;
+    width: 70%;
+}
+
+.pokemon-name {
+    font-weight: bold;
+}
+
+.text-shadow {
+    text-shadow: 0px 2px 10px $page-color;
+}
+
+.text-shadow {
+    background-color: rgba(255,255,255,0.05);
+}
+
+.pokemon-info {
+    background-color: $page-color;
+    padding: 2rem;
+    border-top-left-radius: 2pc;
+    border-top-right-radius: 2pc;
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        p {
+            font-size: 1rem;
+            font-weight: bold;
+            padding-right: 1rem;
+            border-bottom: 3px solid $black-metal;
+            padding-bottom: 0.5rem;
+        }
+
+        ion-icon {
+            font-size: 2rem;
+        }
+    }
+
+    article {
+        margin-bottom: 2rem;
+    }
+
+}
+
+.stats-pokemon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

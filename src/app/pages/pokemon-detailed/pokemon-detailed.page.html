@@ -1,15 +1,47 @@
 <ion-content>
     <ion-header>
         <div>
-            <a [routerLink]="['/']"><ion-icon name="arrow-back-sharp" class="font-nav"></ion-icon></a>
+            <a [routerLink]="['/']" class="text-shadow"><ion-icon name="arrow-back-sharp" class="font-nav"></ion-icon></a>
             <img [src]="pokemon?.sprite" [alt]="pokemon.name" class="nav-img-pkm">
         </div>
         <div>
             <ion-icon name="heart-sharp" *ngIf="pokemon?.isFavorite" (click)="changeFavorite()"  class="nav-icon font-nav"></ion-icon>
             <ion-icon name="heart-outline" *ngIf="!pokemon?.isFavorite" (click)="changeFavorite()"  class="nav-icon font-nav"></ion-icon>
-            <p class="font-nav">#{{ pokemon.id | number:'3.0' }}</p>
+            <p class="font-nav text-shadow">#{{ pokemon.id | number:'3.0' }}</p>
         </div>
     </ion-header>
 
-
+    <main [ngStyle]="{'backgroundColor': rgb}">
+        <section class="pokemon-show">
+            <img class="pokemon-img" [src]="pokemon?.sprite" [alt]="pokemon?.name">
+            <h1 class="pokemon-name text-shadow">{{ pokemon.name }}</h1>
+            <div class="types-container">
+                <p *ngFor="let type of pokemon.type" [class]="type">{{ type }}</p>
+            </div>
+        </section>
+        <section class="pokemon-info">
+            <header>
+                <p>Informações</p>
+                <ion-icon name="information-circle"></ion-icon>
+            </header>
+            <article> 
+                <div class="stats-pokemon">ID : <div>{{ pokemon.id }}</div></div>
+                <div class="stats-pokemon">Altura : <div>{{ pokemon.height }}' </div></div>
+                <div class="stats-pokemon">Peso : <div>{{ pokemon.weight }} lbs</div></div>
+                <div class="stats-pokemon">Geração : <div>{{ pokemon.generation }}</div></div>
+            </article>
+            <header>
+                <p>Status</p>
+                <ion-icon name="stats-chart"></ion-icon>
+            </header>
+            <article>
+                <div class="stats-pokemon">Ataque : <div>{{ pokemon.stats.attack }} <input type="range" [value]="pokemon?.stats?.attack"  min="0" max="181" disabled></div></div>
+                <div class="stats-pokemon">Defesa : <div>{{ pokemon.stats.defense }} <input type="range" [value]="pokemon?.stats?.defense"  min="0" max="230" disabled></div></div>
+                <div class="stats-pokemon">Vida : <div>{{ pokemon.stats.hp }} <input type="range" [value]="pokemon?.stats?.hp"  min="0" max="255" disabled></div></div>
+                <div class="stats-pokemon">Ataque especial : <div>{{ pokemon.stats["special-attack"] }} <input type="range" [value]="pokemon?.stats['special-attack']"  min="0" max="173" disabled></div></div>
+                <div class="stats-pokemon">Defesa especial : <div>{{ pokemon.stats["special-defense"] }} <input type="range" [value]="pokemon?.stats['special-defense']"  min="0" max="230" disabled></div></div>
+                <div class="stats-pokemon">Velocidade : <div>{{ pokemon.stats.speed }} <input type="range" [value]="pokemon?.stats?.speed"  min="0" max="200" disabled></div></div>
+            </article>
+        </section>
+    </main>
 </ion-content>
