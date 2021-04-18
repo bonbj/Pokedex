@@ -1,5 +1,15 @@
-<app-navbar btnBack="/home" btnHeart="true" [imageUrl]="pokemon?.imageUrl"></app-navbar>
-
 <ion-content>
+    <ion-header>
+        <div>
+            <a [routerLink]="['/']"><ion-icon name="arrow-back-sharp" class="font-nav"></ion-icon></a>
+            <img [src]="pokemon?.sprite" [alt]="pokemon.name" class="nav-img-pkm">
+        </div>
+        <div>
+            <ion-icon name="heart-sharp" *ngIf="pokemon?.isFavorite" (click)="changeFavorite()"  class="nav-icon font-nav"></ion-icon>
+            <ion-icon name="heart-outline" *ngIf="!pokemon?.isFavorite" (click)="changeFavorite()"  class="nav-icon font-nav"></ion-icon>
+            <p class="font-nav">#{{ pokemon.id | number:'3.0' }}</p>
+        </div>
+    </ion-header>
+
 
 </ion-content>

@@ -1,10 +1,10 @@
-<section class="pokemon-list-item" [ngStyle]="{'backgroundColor': rgb}" (click)="detailedPage()" [routerLink]="['/pokemon-detailed']">
+<section class="pokemon-list-item" [ngStyle]="{'backgroundColor': rgb}">
   <div class="pokemon-list-item__header">
     <p>#{{ pokemon.id | number:'3.0' }}</p>
     <ion-icon name="heart-sharp" *ngIf="pokemon.isFavorite" (click)="changeFavorite()"></ion-icon>
     <ion-icon name="heart-outline" *ngIf="!pokemon.isFavorite" (click)="changeFavorite()"></ion-icon>
   </div>
-  <div class="pokemon-list-item__container">
+  <div class="pokemon-list-item__container" (click)="detailedPage()" [routerLink]="['/pokemon-detailed']">
     <div class="pokemon-list-item__container__titles">
       <h2>{{ pokemon.name }}</h2>
       <div class="types-container">

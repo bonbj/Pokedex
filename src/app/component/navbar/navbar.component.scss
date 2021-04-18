@@ -23,23 +23,10 @@
         align-items: center;
     }
 
-    .nav-img-pkm {
-        height: 3vh;
-        width: 3vh;
-        margin: 1rem;
-        filter: grayscale(100%) opacity(0.5) contrast(0);
-        -webkit-filter: grayscale(100%) opacity(0.8) contrast(0);
-        cursor: pointer;
-    }
-
     ion-icon {
         width: 3vh;
         height: 3vh;
         cursor: pointer;
-    }
-
-    .nav-icon-margin {
-        margin-right: 1rem;
     }
 }
 

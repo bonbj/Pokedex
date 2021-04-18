@@ -21,4 +21,8 @@ export class PokemonDetailedPage implements OnInit {
     this.pokemon = this.pokedex.allPokemon.find(pokemon => pokemon.id === this.pageStore.pokemonDetailedId);
   }
 
+  public changeFavorite():void {
+    this.pokemon.isFavorite = !this.pokemon.isFavorite;
+  }
+
 }

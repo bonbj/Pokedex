@@ -8,21 +8,9 @@ import { PageStore } from 'src/app/stores/pages.store';
 })
 export class NavbarComponent {
   @Input() public pageName: string = '';
-  @Input() public pkmId: number = 0;
-  @Input() public imageUrl: string = '';
-  @Input() public btnBack: string = '';
-  @Input() public btnMenu: boolean = false;
-  @Input() public btnFilter: boolean = false;
-  @Input() public btnSearch: boolean = false;
-  @Input() public btnHeart: boolean = false;
-  public pkmFavorite: boolean = false;
   constructor(
     private pageStore: PageStore
   ) { }
-
-  public changeFavorite(): void{
-    this.pkmFavorite = !this.pkmFavorite;
-  }
 
   public openSideMenu(): void{
     this.pageStore.isSideMenuOpen = true;
