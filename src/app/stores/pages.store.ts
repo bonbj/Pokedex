@@ -11,4 +11,6 @@ export class PageStore {
     searchPokemonText: string = "";
     @observable
     pokemonDetailedId: number = 0;
+    @observable
+    pageActive: string;
 }

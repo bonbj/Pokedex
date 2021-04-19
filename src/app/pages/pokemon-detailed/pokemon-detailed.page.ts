@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon.model';
+import { FavoriteStore } from 'src/app/stores/favorite.store';
 import { PageStore } from 'src/app/stores/pages.store';
 import { Pokedex } from 'src/app/stores/pokedex.store';
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-pokemon-detailed',
@@ -15,7 +17,9 @@ export class PokemonDetailedPage implements OnInit {
 
   constructor(
     private pageStore: PageStore,
-    private pokedex: Pokedex
+    private pokedex: Pokedex,
+    private favoriteStore: FavoriteStore,
+    private location: Location
   ) { }
 
   ngOnInit() {
@@ -25,6 +29,11 @@ export class PokemonDetailedPage implements OnInit {
 
   public changeFavorite():void {
     this.pokemon.isFavorite = !this.pokemon.isFavorite;
+    this.favoriteStore.saveFavorite(this.pokemon.isFavorite,this.pokemon.id);
+  }
+
+  public back():void {
+    this.location.back();
   }
 
 }

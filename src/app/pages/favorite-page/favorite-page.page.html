@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <a (click)="openSideMenu()"><ion-icon name="menu-sharp" class="font-nav"></ion-icon></a>
+    <ion-title>Favoritos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<app-side-menu></app-side-menu>
+
+
+<ion-content>
+    <div *ngFor="let pokemon of favoritePokemons">
+        <app-pokemon-list-item [pokemon]="pokemon" (click)="load()"></app-pokemon-list-item>
+    </div>
+</ion-content>

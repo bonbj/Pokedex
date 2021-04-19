@@ -9,8 +9,21 @@
     left: -100vw;
     transition: all 0.5s ease-out;
     background-color: $page-color;
+    z-index: 100;
 }
 
 .side-menu-show {
     left: 0 !important;
+}
+
+ion-toolbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.closer-btn {
+    font-size: 2rem;
+    float: right;
+    cursor: pointer;
+    margin-right: 1rem;
 }

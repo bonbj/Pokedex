@@ -10,6 +10,7 @@ import { PageStore } from './stores/pages.store';
 import { ModalService } from './service/modal-service/modal-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { Pokedex } from './stores/pokedex.store';
+import { FavoriteStore } from './stores/favorite.store';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { Pokedex } from './stores/pokedex.store';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     PageStore,
     ModalService,
-    Pokedex
+    Pokedex,
+    FavoriteStore
   ],
   bootstrap: [AppComponent],
 })

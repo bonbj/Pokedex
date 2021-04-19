@@ -1,2 +1,27 @@
 <aside class="side-menu" [ngClass]="pageStore.isSideMenuOpen ? 'side-menu-show' : '' ">
+    <ion-content>
+        <ion-header>
+            <ion-toolbar>
+                <div></div>
+                <ion-title>Menu</ion-title>
+                <ion-icon name="close-outline" class="closer-btn" (click)="closeMenu()"></ion-icon>
+            </ion-toolbar>
+        </ion-header>
+        <ion-list>
+            <ion-radio-group [(ngModel)]="pageStore.pageActive" (ngModelChange)="changePage()">
+                <ion-item>
+                    <ion-radio slot="start" value="home"></ion-radio>
+                    <ion-icon name="home"></ion-icon>Pokédex
+                </ion-item>
+                <ion-item>
+                    <ion-radio slot="start" value="favorite"></ion-radio>
+                    <ion-icon name="heart"></ion-icon>Meus Favoritos
+                </ion-item>
+                <!-- <ion-item>
+                    <ion-radio slot="start" value="about"></ion-radio>
+                    <ion-icon name="alert-circle"></ion-icon>Sobre
+                </ion-item> -->
+            </ion-radio-group>
+        </ion-list>
+    </ion-content>
 </aside>

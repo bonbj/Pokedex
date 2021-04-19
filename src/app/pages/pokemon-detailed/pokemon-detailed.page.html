@@ -1,7 +1,7 @@
 <ion-content>
     <ion-header>
         <div>
-            <a [routerLink]="['/']" class="text-shadow"><ion-icon name="arrow-back-sharp" class="font-nav"></ion-icon></a>
+            <a (click)="back()" class="text-shadow"><ion-icon name="arrow-back-sharp" class="font-nav"></ion-icon></a>
             <img [src]="pokemon?.sprite" [alt]="pokemon.name" class="nav-img-pkm">
         </div>
         <div>
