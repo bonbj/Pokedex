@@ -29,6 +29,5 @@ npm-debug.log*
 /platforms
 /plugins
 /www
-/resources
 
 package-lock.json
