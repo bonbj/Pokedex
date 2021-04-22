@@ -22,14 +22,18 @@
 .search-icon {
     z-index: 100;
     position: relative;
-    top: -65%;
+    top: -83%;
     left: 15%;
+    width: 2rem;
+    height: 2rem;
 }
 
 .close-icon {
     z-index: 100;
     position: relative;
-    top: -65%;
+    top: -83%;
     left: 76%;
     cursor: pointer;
+    width: 2rem;
+    height: 2rem;
 }

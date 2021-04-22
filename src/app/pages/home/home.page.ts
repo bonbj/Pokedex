@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PageStore } from 'src/app/stores/pages.store';
 import { Pokedex } from 'src/app/stores/pokedex.store';
 
@@ -7,11 +7,20 @@ import { Pokedex } from 'src/app/stores/pokedex.store';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
   constructor(
     public pokedex:Pokedex,
     public pageStore: PageStore
   ) {}
+
+  
+  ngOnInit() {
+    this.pageStore.pageActive = "home";
+  }
+
+  ionViewWillEnter(){
+    this.pageStore.pageActive = "home";
+  }
 
   public loadMorePokemon($event) : void {
     setTimeout(() => {

@@ -11,10 +11,10 @@
 
     <ion-list>
         <ion-radio-group value="biff" [(ngModel)]="mainFilter" (ngModelChange)="filterPokemon()">
-            <ion-list-header>
+            <ion-list-header (click)="changeTypeFilter()">
               <ion-label>
-                <ion-icon name="caret-forward-outline" (click)="changeTypeFilter()" *ngIf="!filterTypeOpen"></ion-icon>
-                <ion-icon name="caret-down-outline" (click)="changeTypeFilter()" *ngIf="filterTypeOpen"></ion-icon>
+                <ion-icon name="caret-forward-outline" *ngIf="!filterTypeOpen"></ion-icon>
+                <ion-icon name="caret-down-outline" *ngIf="filterTypeOpen"></ion-icon>
                 Tipo
               </ion-label>
             </ion-list-header>
@@ -30,10 +30,10 @@
 
     <ion-list>
       <ion-radio-group value="biff" [(ngModel)]="generationFilter" (ngModelChange)="filterPokemonByGeneration()">
-        <ion-list-header>
+        <ion-list-header (click)="changeGenerationFilter()">
           <ion-label>
-            <ion-icon name="caret-forward-outline" (click)="changeGenerationFilter()" *ngIf="!filterGenerationOpen"></ion-icon>
-            <ion-icon name="caret-down-outline" (click)="changeGenerationFilter()" *ngIf="filterGenerationOpen"></ion-icon>
+            <ion-icon name="caret-forward-outline" *ngIf="!filterGenerationOpen"></ion-icon>
+            <ion-icon name="caret-down-outline" *ngIf="filterGenerationOpen"></ion-icon>
             Geração
           </ion-label>
         </ion-list-header>

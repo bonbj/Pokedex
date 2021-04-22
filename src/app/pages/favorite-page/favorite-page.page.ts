@@ -13,14 +13,16 @@ export class FavoritePagePage implements OnInit {
   public favoritePokemons: Pokemon[] = [];
   constructor(
     private pageStore:PageStore,
-    private pokedex:Pokedex
+    private pokedex:Pokedex,
   ) { }
 
   ngOnInit() {
+    this.pageStore.pageActive = "favorite";
     this.load();
   }
 
   ionViewWillEnter(){
+    this.pageStore.pageActive = "favorite";
     this.load();
   }
   public openSideMenu():void {

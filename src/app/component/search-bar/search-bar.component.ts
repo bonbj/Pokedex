@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon.model';
 import { PageStore } from 'src/app/stores/pages.store';
 import { Pokedex } from 'src/app/stores/pokedex.store';
@@ -9,6 +9,7 @@ import { Pokedex } from 'src/app/stores/pokedex.store';
   styleUrls: ['./search-bar.component.scss'],
 })
 export class SearchBarComponent{
+  @Input() isFavoritePage: boolean = false;
 
   constructor(
     public pageStore:PageStore,
@@ -24,7 +25,7 @@ export class SearchBarComponent{
       this.clearFilter();
       return;
     }
-    this.pokedex.filteredPokemon = this.pokedex.allPokemon.filter((pokemon:Pokemon) => pokemon.name.includes(this.pageStore.searchPokemonText));
+    this.pokedex.filteredPokemon = this.pokedex.allPokemon.filter((pokemon:Pokemon) => pokemon.name.includes(this.pageStore.searchPokemonText.toLowerCase()));
   }
 
   public clearFilter(): void {

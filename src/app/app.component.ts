@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { PokedexProvider } from './provider/pokedex/pokedex.provider';
 import { ModalService } from './service/modal-service/modal-service.service';
+// import { Platform } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-root',
@@ -11,7 +13,10 @@ export class AppComponent {
   constructor(
     private modalService: ModalService,
     private pokedexProvider: PokedexProvider,
+    // private platform: Platform
+
   ) {
+    // this.platform.backButton.subscribeWithPriority(10, () => {});
     this.loadingPokedex();
   }
 

@@ -108,3 +108,17 @@ main {
     align-items: center;
     justify-content: space-between;
 }
+
+ion-header::after {
+    display: none;
+}
+
+article {
+    div {
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
