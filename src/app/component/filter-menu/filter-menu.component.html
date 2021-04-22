@@ -1,11 +1,11 @@
 <aside class="filter-menu" [ngClass]="pageStore.isFilterMenuOpen ? 'filter-menu-show' : '' ">
 
-    <ion-header class="filter-title">
-        <ion-toolbar>
+    <ion-header>
+        <div class="flex">
           <ion-icon name="trash-outline" class="clear-filter" (click)="clearFilter()"></ion-icon>
-          <ion-title >Filtro</ion-title>
+          <h1>Filtro</h1>
           <ion-icon name="close-outline" class="closer-btn" (click)="closeFilter()"></ion-icon>
-        </ion-toolbar>
+        </div>
     </ion-header>
 
 

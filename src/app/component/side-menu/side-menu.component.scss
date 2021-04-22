@@ -27,3 +27,9 @@ ion-toolbar {
     cursor: pointer;
     margin-right: 1rem;
 }
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+}

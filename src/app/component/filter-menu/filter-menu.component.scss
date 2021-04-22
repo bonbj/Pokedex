@@ -57,6 +57,17 @@
     width: 1.5rem;
 }
 
+.flex {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    align-items: center;
+    
+    h1 {
+        margin: 0;
+    }
+}
+
 .pokemon-generation {
     width: 3rem;
 }

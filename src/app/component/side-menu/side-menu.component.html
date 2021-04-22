@@ -1,11 +1,11 @@
 <aside class="side-menu" [ngClass]="pageStore.isSideMenuOpen ? 'side-menu-show' : '' ">
     <ion-content>
         <ion-header>
-            <ion-toolbar>
+            <div class="flex">
                 <div></div>
                 <ion-title>Menu</ion-title>
                 <ion-icon name="close-outline" class="closer-btn" (click)="closeMenu()"></ion-icon>
-            </ion-toolbar>
+            </div>
         </ion-header>
         <ion-list>
             <ion-radio-group [(ngModel)]="pageStore.pageActive" (ngModelChange)="changePage()">
