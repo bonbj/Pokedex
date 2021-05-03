@@ -20,14 +20,10 @@ describe('AppComponent', () => {
         HttpClient,
         HttpHandler
        ]
-    }).compileComponents();
+      }).compileComponents();
+      
+      const fixture = TestBed.createComponent(AppComponent);
+      const app = fixture.debugElement.componentInstance;
   }));
-
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  });
-  // TODO: add more tests!
 
 });
