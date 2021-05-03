@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
+import { Pokedex } from 'src/app/stores/pokedex.store';
 
 import { MainModalComponent } from './main-modal.component';
 
@@ -10,7 +11,10 @@ describe('MainModalComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ MainModalComponent ],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule.forRoot()],
+      providers : [
+        Pokedex
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(MainModalComponent);

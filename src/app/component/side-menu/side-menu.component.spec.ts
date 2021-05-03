@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
+import { PageStore } from 'src/app/stores/pages.store';
 
 import { SideMenuComponent } from './side-menu.component';
 
@@ -10,7 +12,12 @@ describe('SideMenuComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ SideMenuComponent ],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule.forRoot()],
+      providers : [
+        PageStore,
+        Router,
+        Function
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(SideMenuComponent);
